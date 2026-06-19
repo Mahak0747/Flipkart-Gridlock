@@ -15,11 +15,23 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 # Asset paths
+# Asset paths
 RAW_CSV_PATH = PROJECT_ROOT / "jan to may police violation_anonymized791b166.csv"
+
+# Render-safe model path
 MODEL_PKL_PATH = PROJECT_ROOT / "model.pkl"
+
 MODEL_METRICS_PATH = PROJECT_ROOT / "model_metrics.csv"
+
 PROCESSED_PARQUET_PATH = DATA_DIR / "processed_violations.parquet"
+
 OFFICERS_SEED_PATH = DATA_DIR / "officers_seed.json"
+
+
+# Debug path verification
+print("PROJECT ROOT:", PROJECT_ROOT)
+print("MODEL PATH:", MODEL_PKL_PATH)
+print("MODEL EXISTS:", MODEL_PKL_PATH.exists())
 
 # Cache build settings
 BATCH_PREDICT_CHUNK_SIZE = 5_000

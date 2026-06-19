@@ -7,11 +7,11 @@ export default defineConfig({
     port: 5173,
     proxy: {
       '/api': {
-        target: 'https://parkwise-ai-vb7g.onrender.com/',
+        target: 'https://parkwise-ai-vb7g.onrender.com',
         changeOrigin: true,
       },
       '/health': {
-        target: 'https://parkwise-ai-vb7g.onrender.com/',
+        target: 'https://parkwise-ai-vb7g.onrender.com',
         changeOrigin: true,
       },
     },
