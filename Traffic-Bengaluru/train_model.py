@@ -38,7 +38,9 @@ from sklearn.impute import SimpleImputer
 # ══════════════════════════════════════════════════════════════════════════════
 
 RAW_DATA_PATH = "/mnt/user-data/uploads/jan_to_may_police_violation_anonymized791b166.csv"
-OUTPUT_DIR    = "/mnt/user-data/outputs"
+import os
+
+OUTPUT_DIR = os.path.join(os.getcwd(), "outputs")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 SEED = 42
