@@ -51,6 +51,14 @@ app.include_router(overview.router)
 app.include_router(analytics.router)
 
 
+@app.get("/")
+def home():
+    return {
+        "status": "success",
+        "message": "Backend is running 🚀",
+        "version": "1"
+    }
+
 @app.get("/health")
 def health():
     from backend.ml.inference import ModelRegistry

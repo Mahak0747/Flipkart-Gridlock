@@ -9,7 +9,7 @@ import type {
 } from '../types';
 
 const api = axios.create({
-  baseURL: '',
+  baseURL: 'https://your-backend.onrender.com',
   timeout: 30000,
   headers: { 'Content-Type': 'application/json' },
 });
