@@ -1,32 +1,32 @@
-"""Application startup — model singleton + data cache."""
+"""Application startup — lightweight initialization (Render-safe)."""
 
 from __future__ import annotations
 
 import logging
-
-from backend.core.config import DATA_DIR, MODEL_PKL_PATH, PROJECT_ROOT
-from backend.ml.inference import ModelRegistry, verify_model_metadata
+from backend.core.config import DATA_DIR, PROJECT_ROOT
 from backend.services.cache_service import DataCache
 
 logger = logging.getLogger(__name__)
 
 
 def run_startup() -> None:
-    """Load model once, then load or build processed violation cache."""
+    """
+    Lightweight startup only.
+    ❌ No ML model loading here (important for Render memory limit)
+    """
+
     DATA_DIR.mkdir(parents=True, exist_ok=True)
 
-    logger.info("ParkWise AI backend starting")
+    logger.info("🚀 ParkWise AI backend starting")
     logger.info("Project root: %s", PROJECT_ROOT)
 
-    bundle = ModelRegistry.load(str(MODEL_PKL_PATH))
-    verify_model_metadata(bundle)
-    logger.info(
-        "Model loaded: %s (trained %s) — %s features",
-        bundle["model_name"],
-        bundle["trained_at"],
-        len(bundle["feature_cols"]),
-    )
-    logger.info("Feature columns: %s", bundle["feature_cols"])
+    # -----------------------------
+    # SAFE: Cache initialization
+    # -----------------------------
+    try:
+        DataCache.initialize()
+        logger.info("✅ Cache initialized")
+    except Exception as e:
+        logger.warning("⚠️ Cache init skipped: %s", str(e))
 
-    DataCache.initialize()
-    logger.info("Startup complete")
+    logger.info("✅ Startup complete (lightweight mode)")
