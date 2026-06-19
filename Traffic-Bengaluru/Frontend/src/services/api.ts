@@ -9,7 +9,7 @@ import type {
 } from '../types';
 
 const api = axios.create({
-  baseURL: '',
+  baseURL: 'https://parkwise-ai-vb7g.onrender.com/',
   timeout: 30000,
   headers: { 'Content-Type': 'application/json' },
 });
