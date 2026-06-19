@@ -19,12 +19,14 @@ ENV/
 # Jupyter Notebook checkpoints
 .ipynb_checkpoints/
 
-# model artifacts (optional but recommended)
-*.pkl
-*.joblib
-
 # logs
 *.log
+
+# =========================
+# IMPORTANT: ML MODEL FILES
+# =========================
+# DO NOT ignore pkl/joblib in hackathon deployments
+# (we need model.pkl on Render)
 
 # =========================
 # Frontend (React / Vite)
@@ -38,13 +40,7 @@ build/
 .env.local
 .env.*.local
 
-# vite
 .vite/
-
-# logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 
 # OS files
 .DS_Store

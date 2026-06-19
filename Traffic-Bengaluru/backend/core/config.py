@@ -7,7 +7,7 @@ from pathlib import Path
 
 # Project root: Traffic Bengaluru/ (parent of backend/)
 BACKEND_DIR = Path(__file__).resolve().parents[1]
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
+PROJECT_ROOT = BACKEND_DIR.parent
 DATA_DIR = BACKEND_DIR / "data"
 
 # Ensure project root is importable for app_utils.py and train_model.py
