@@ -1,6 +1,7 @@
 """Model inference wrappers — lazy-loaded singleton (Render-safe)."""
 
 from __future__ import annotations
+from app_utils import recommend_action
 
 from typing import Any
 import pandas as pd
@@ -95,4 +96,5 @@ __all__ = [
     "run_predict",
     "run_batch_predict",
     "verify_model_metadata",
+    "recommend_action", 
 ]
